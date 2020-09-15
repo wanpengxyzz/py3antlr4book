@@ -1,5 +1,4 @@
 grammar Rows;
-
 @parser::members {
 @property
 def column(self):

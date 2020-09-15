@@ -13,7 +13,14 @@ class PropertyFileLoader(PropertyFileVisitor):
         self.props = {}
 
     def visitProp(self, ctx):
+        print("visitProp:")
+        ctx.businessnode=1
+        print(id(ctx))
         self.props[ctx.ID().getText()] = ctx.STRING().getText()
+    
+    def visitTop(self, ctx):
+        print("visitTop")
+        self.visitChildren(ctx)
 
     def show(self):
         for (key, value) in self.props.items():
@@ -31,6 +38,8 @@ if __name__ == '__main__':
     tree = parser.top()
 
     visitor = PropertyFileLoader()
+    visitor.visit(tree)
+    print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
     visitor.visit(tree)
 
     visitor.show()

@@ -5,10 +5,13 @@ from antlr4 import *
 from antlr4.InputStream import InputStream
 from ExprLexer import ExprLexer
 from ExprParser import ExprParser
-
+defaultencoding = 'utf-8'
+if sys.getdefaultencoding() != defaultencoding:
+    reload(sys)
+    sys.setdefaultencoding(defaultencoding)
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        input_stream = FileStream(sys.argv[1])
+        input_stream = FileStream(sys.argv[1],encoding="asc")
     else:
         input_stream = InputStream(sys.stdin.readline())
 
