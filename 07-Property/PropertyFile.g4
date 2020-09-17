@@ -8,7 +8,8 @@ def finishFile(self):
 def defineProperty(self, name, value):
     pass
 }
-
+SL_COMMENT
+    :   '//' .*? '\n' -> channel(2);   // channel(2)
 top : {self.startFile()} prop+ {self.finishFile()};
 prop : ID '=' STRING '\n' {self.defineProperty($ID, $STRING)};
 ID   : [a-z]+ ;

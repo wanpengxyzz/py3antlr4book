@@ -16,6 +16,7 @@ class ExprVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ExprParser#STATE_EXPR.
     def visitSTATE_EXPR(self, ctx:ExprParser.STATE_EXPRContext):
+        print(dir(ctx))
         return self.visitChildren(ctx)
 
 

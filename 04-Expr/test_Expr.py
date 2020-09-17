@@ -11,7 +11,7 @@ if sys.getdefaultencoding() != defaultencoding:
     sys.setdefaultencoding(defaultencoding)
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        input_stream = FileStream(sys.argv[1],encoding="asc")
+        input_stream = FileStream(sys.argv[1],encoding="utf-8")
     else:
         input_stream = InputStream(sys.stdin.readline())
 
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     token_stream = CommonTokenStream(lexer)
     parser = ExprParser(token_stream)
     tree = parser.prog()
-
+    print(tree.getText())
     lisp_tree_str = tree.toStringTree(recog=parser)
     print(lisp_tree_str)
 
